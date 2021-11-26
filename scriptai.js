@@ -13,7 +13,7 @@ function scriptAI(){
         "Give a man a fish, and you will feed him for the day. Give a man two prosthetic legs, and he'll shoot his girlfriend.",
         "Where did sally go when the bomb went off? - everywhere. Why did sally fall off the swing? She had no arms. Knock knock. Whose there? -not sally.",
         "Food is like dark humor, not every one gets it.",
-        "Why did the Honda Civic cross the road? Well it wasn't to get hit by a fucking Mazda."
+        "Why did the Honda Civic cross the road? Well, it wasn't to get hit by a fucking Mazda."
     ];
     
     //Greetings & Greeting replies
