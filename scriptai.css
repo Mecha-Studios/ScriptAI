@@ -24,4 +24,5 @@ body{
     outline: none;
     position: absolute;
     bottom: 0;
+    text-transform: lowercase;
 }
