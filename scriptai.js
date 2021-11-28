@@ -1,28 +1,10 @@
 //ScriptAI 
 //Copyright (C) TR 2021
 
+var version = "1.2";
 var commandinput = document.getElementById('input');
 var commandoutput = document.getElementById('output');
-let currentDate = new Date();
-let cDay = currentDate.getDate();
-let cMonth = currentDate.getMonth() + 1;
-let cYear = currentDate.getFullYear();
-let cTime = currentDate.getHours() + ":" + currentDate.getMinutes();
-var months = [
-    " ",
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
-]
+commandinput.value.toLowerCase();
 
 function scriptAI(){
 
@@ -98,10 +80,6 @@ function scriptAI(){
         "My name is ScriptAI"
     ];
 
-    datetimereplies = [
-        "It is currently " + months[cMonth] + " " + cDay + ", " + cYear + " at " + cTime
-    ]
-
     //Message reception & response system
     if(commandinput.value.includes("hey") && !commandinput.value.includes("say") || commandinput.value.includes("hello") && !commandinput.value.includes("say") 
     || commandinput.value.includes("hi") && !commandinput.value.includes("shit") && !commandinput.value.includes("something") && !commandinput.value.includes("say") 
@@ -130,7 +108,7 @@ function scriptAI(){
     } else if(commandinput.value.includes('weather')){
         commandoutput.value = "Here's the weather for today...";
         window.open("https://duckduckgo.com/?q=weather");
-    } else if(commandinput.value.includes("how") || commandinput.value.includes("what") & !commandinput.value.includes("time") 
+    } else if(commandinput.value.includes("how") || commandinput.value.includes("what") && !commandinput.value.includes('version') && !commandinput.value.includes("time") 
     & !commandinput.value.includes("the time") & !commandinput.value.includes("date") || commandinput.value.includes("who") || commandinput.value.includes("search")){
         commandoutput.value = "Searching the web for '" + commandinput.value + "'";
         window.open("https://duckduckgo.com/?q=" + commandinput.value);
@@ -141,8 +119,45 @@ function scriptAI(){
     } else if(commandinput.value.includes("say") && !commandinput.value.includes("funny") && !commandinput.value.includes("joke")){
         commandoutput.value = commandinput.value.split("say");
     } else if(commandinput.value.includes("time") || commandinput.value.includes("date")){
-        setInterval(cTime, 100);
-        commandoutput.value = datetimereplies[Math.floor(Math.random() * datetimereplies.length)];
+        let currentDate = new Date();
+        let cDay = currentDate.getDate();
+        let cMonth = currentDate.getMonth() + 1;
+        let cYear = currentDate.getFullYear();
+        let cHour = currentDate.getHours()
+        let cMin = currentDate.getMinutes();
+        var cTime = cHour + ":" + cMin;
+        if(cHour <= 11){
+            cHour = currentDate.getHours();
+            cTime += " AM";
+        } else if(cHour >= 12){
+            cHour = currentDate.getHours()/2;
+            cTime += " PM";
+        }
+
+        if(cMin <= 9){
+            cMin = "0" + currentDate.getMinutes();
+        } else if( cMin >= 10){
+            cMin = currentDate.getMinutes();
+        }
+
+        var months = [
+            " ",
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"
+        ]
+        commandoutput.value = "It is currently " + months[cMonth] + " " + cDay + ", " + cYear + " at " + cTime;
+    } else if(commandinput.value.includes("version")){
+        commandoutput.value = version;
     } else{
         commandoutput.value = "Sorry, I didn't get that.";
     }

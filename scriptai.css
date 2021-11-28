@@ -5,16 +5,18 @@ body{
 #output{
     text-shadow: black 2.5px 2.5px 2.5px; 
     width: 100%; 
-    height: 80%;
+    height: calc(100% - 100px);
     font-size: 65px; 
     border-style: none; 
-    resize: vertical; 
     color: white;
     background-color: black;
+    position: absolute;
+    top: 0;
+    outline: none;
 }
 
 #input{
-    height: 15%; 
+    height: 100px; 
     border-style: none; 
     width: 90%; 
     font-size: 75px; 
