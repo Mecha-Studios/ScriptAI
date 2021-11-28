@@ -1,7 +1,7 @@
 //ScriptAI 
 //Copyright (C) TR 2021
 
-var version = "1.2";
+var version = "1.3";
 var commandinput = document.getElementById('input');
 var commandoutput = document.getElementById('output');
 commandinput.value.toLowerCase();
@@ -183,4 +183,30 @@ function scriptAI(){
     utter.voice = english_voice;
 
     window.speechSynthesis.speak(utter);
+}
+
+function talk() {
+
+    if (window.hasOwnProperty('webkitSpeechRecognition')) {
+
+        var recognition = new webkitSpeechRecognition();
+
+        recognition.continuous = false;
+        recognition.interimResults = false;
+
+        recognition.lang = "en-US";
+        recognition.start();
+
+        recognition.onresult = function (e) {
+            commandinput.value
+                = e.results[0][0].transcript;
+            recognition.stop();
+            scriptAI();
+        };
+
+        recognition.onerror = function (e) {
+            recognition.stop();
+        }
+
+    }
 }

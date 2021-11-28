@@ -28,3 +28,19 @@ body{
     bottom: 0;
     text-transform: lowercase;
 }
+
+#talkbutt{
+    height: 100px; 
+    border-style: none; 
+    width: 10%; 
+    font-size: 75px; 
+    border-radius: 15px; 
+    color: white; 
+    background: rgba(0, 0, 0, 0);
+    outline: none;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+} #talkbutt:active{
+    background-color: red;
+}
