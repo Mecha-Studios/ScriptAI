@@ -1,7 +1,7 @@
 //ScriptAI 
 //Copyright (C) TR 2021
 
-var version = "1.3";
+var version = "1.3.1";
 var commandinput = document.getElementById('input');
 var commandoutput = document.getElementById('output');
 commandinput.value.toLowerCase();
@@ -128,21 +128,23 @@ function scriptAI(){
         let cYear = currentDate.getFullYear();
         let cHour = currentDate.getHours()
         let cMin = currentDate.getMinutes();
-        var cTime = cHour + ":" + cMin;
-        if(cHour <= 11){
+        var ampm;
+
+        if(cHour >= 13){
+            cHour = currentDate.getHours() - 12;
+            ampm = "PM";
+        } else{
             cHour = currentDate.getHours();
-            cTime += " AM";
-        } else if(cHour >= 12){
-            cHour = currentDate.getHours()/2;
-            cTime += " PM";
+            ampm = "AM";
         }
 
         if(cMin <= 9){
             cMin = "0" + currentDate.getMinutes();
-        } else if( cMin >= 10){
+        } else if(cMin >= 9){
             cMin = currentDate.getMinutes();
         }
 
+        var cTime = cHour + ":" + cMin + " " + ampm;
         var months = [
             " ",
             "January",
@@ -158,6 +160,7 @@ function scriptAI(){
             "November",
             "December"
         ]
+
         commandoutput.value = "It is currently " + months[cMonth] + " " + cDay + ", " + cYear + " at " + cTime;
     } else if(commandinput.value.includes("version")){
         commandoutput.value = version;
