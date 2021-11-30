@@ -1,5 +1,7 @@
 body{
     background-color: black;
+    background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ficyber.me%2Fcontent%2Fimages%2Fsystem%2Fhome_cover_1553642738102_57e35a.gif&f=1&nofb=1');
+    background-size: cover;
 }
 
 #output{
@@ -9,7 +11,7 @@ body{
     font-size: 65px; 
     border-style: none; 
     color: white;
-    background-color: black;
+    background: rgba(0, 0, 0, 0);
     position: absolute;
     resize: none;
     top: 0;
