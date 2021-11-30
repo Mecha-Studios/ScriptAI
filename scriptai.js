@@ -1,25 +1,36 @@
 //ScriptAI 
 //Copyright (C) TR 2021
 
-var version = "1.4";
+var version = "1.4.1";
 var commandinput = document.getElementById('input');
 var commandoutput = document.getElementById('output');
 commandinput.value.toLowerCase();
 
 function scriptAI(){
 
+    //KEYWORDS
+    var question = [
+        "what",
+        "how",
+        "where",
+        "when",
+        "why"
+    ];
+
+    //RESPONSES
     //Jokes
     var jokes = [
         "What's the difference between a Lamborghini and a garbage can of dead babies? I don't have a Lamborghini in my garage",
         "If video games make kids more violent, why are they so easy to beat the shit out of?",
         "How many dead babies does it take to paint a wall? It depends how hard you throw them",
         "Give a man a fish, and you will feed him for the day. Give a man two prosthetic legs, and he'll shoot his girlfriend.",
-        "Where did sally go when the bomb went off? - everywhere. Why did sally fall off the swing? She had no arms. Knock knock. Whose there? -not sally.",
+        "Where did Sally go when the bomb went off? - everywhere. Why did Sally fall off the swing? She had no arms. Knock knock. Whose there? -not Sally.",
         "Food is like dark humor, not every one gets it.",
         "Why did the Honda Civic cross the road? Well, it wasn't to get hit by a fucking Mazda.",
-        " don’t have a carbon footprint. I just drive everywhere.",
+        "I don't have a carbon footprint. I just drive everywhere.",
         "What did the asteroid that killed the dinosaurs say? T-rex, I'm coming for my hug!",
-        "An apple a day keeps the doctor away… Or at least it does if you throw it hard enough."
+        "An apple a day keeps the doctor away… Or at least it does if you throw it hard enough.",
+        "JFK and Lincoln were very open minded"
     ];
     
     //Greetings & Greeting replies
@@ -201,17 +212,18 @@ function talk() {
     if (window.hasOwnProperty('webkitSpeechRecognition')) {
 
         var recognition = new webkitSpeechRecognition();
+        var mic = document.getElementById('micbutt');
 
         recognition.continuous = false;
         recognition.interimResults = false;
-
+        micbutt.src = 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ffile.mockplus.com%2Fimage%2F2018%2F04%2F5fc8b569-d76f-4d5d-809a-6dc6968e28f7.gif&f=1&nofb=1';
         recognition.lang = "en-US";
         recognition.start();
-
         recognition.onresult = function (e) {
             commandinput.value
                 = e.results[0][0].transcript;
             recognition.stop();
+            micbutt.src = 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.iconsdb.com%2Ficons%2Fpreview%2Fwhite%2Fmicrophone-8-xxl.png&f=1&nofb=1';
             scriptAI();
         };
 
