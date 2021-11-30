@@ -1,14 +1,13 @@
 //ScriptAI 
 //Copyright (C) TR 2021
-
-var version = "1.4.1";
+var version = "1.5.1";
 var commandinput = document.getElementById('input');
 var commandoutput = document.getElementById('output');
 commandinput.value.toLowerCase();
 
 function scriptAI(){
 
-    //KEYWORDS
+    //KEYWORDS & PROMPTS
     var question = [
         "what",
         "how",
@@ -17,8 +16,57 @@ function scriptAI(){
         "why"
     ];
 
+    var greetings = [
+        "hey",
+        "hello",
+        "whats up",
+        "what's up",
+        "greetings",
+        "hi"
+    ];
+    
+    var jokeprompt = [
+        "joke",
+        "funny",
+        "hilarious",
+        "humorous"
+    ];
+
+    var hruprompt = [
+        "how are you",
+        "how's your day",
+        "how is your day",
+        "hows your day"
+    ];
+
+    var swears = [
+        "fuck",
+        "f***",
+        "bitch",
+        "b****",
+        "shit",
+        "s***",
+        "fag",
+        "faggot",
+        "f**",
+        "f*****",
+        "retard",
+        "stupid",
+        "cunt",
+        "c***",
+        "ass",
+        "a**",
+        "dick",
+        "d***"
+    ];
+
+    var datetime = [
+        "date",
+        "day",
+        "time",
+    ]
+
     //RESPONSES
-    //Jokes
     var jokes = [
         "What's the difference between a Lamborghini and a garbage can of dead babies? I don't have a Lamborghini in my garage",
         "If video games make kids more violent, why are they so easy to beat the shit out of?",
@@ -33,7 +81,6 @@ function scriptAI(){
         "JFK and Lincoln were very open minded"
     ];
     
-    //Greetings & Greeting replies
     var greetingreplies = [
         "Hi",
         "Hello",
@@ -43,7 +90,6 @@ function scriptAI(){
         "What's up my diggity dogs?",
     ];
 
-    //Replies to things like 'how are you'
     var hrureplies = [
         "I'm doing pretty good",
         "I'm great",
@@ -55,7 +101,6 @@ function scriptAI(){
         "Not great, but I'm okay"
     ];
 
-    //Insult and swear replies
     var swearreplies = [
         "Fuck you",
         "Fuck off",
@@ -78,7 +123,6 @@ function scriptAI(){
         "Haha, you're a loser"
     ];
 
-    //Responses to 'yes'
     repliestoyes = [
         "Okay",
         "Yes received",
@@ -86,7 +130,6 @@ function scriptAI(){
         "No"
     ];
 
-    //Replies to things like 'whats your name' & 'who are you'
     whorureplies = [
         "My name is ScriptAI, I'm here to help!",
         "I'm a virtual assistant created by TR. My name is ScriptAI.",
@@ -96,18 +139,7 @@ function scriptAI(){
 
     //Message reception & response system
     if(!commandinput.value.includes("say") && !commandinput.value.includes("tweet")){
-        if(commandinput.value.includes("hey")|| commandinput.value.includes("hello") || commandinput.value.includes("hi") && !commandinput.value.includes("this") 
-        && !commandinput.value.includes("shit") && !commandinput.value.includes("something") || commandinput.value.includes("what's up")
-        || commandinput.value.includes("whats up")){
-            commandoutput.value = greetingreplies[Math.floor(Math.random() * greetingreplies.length)];
-        } else if(commandinput.value.includes("how are you")){
-            commandoutput.value = hrureplies[Math.floor(Math.random() * hrureplies.length)];
-        } else if(commandinput.value .includes("stupid") || commandinput.value.includes("fuck") || commandinput.value.includes("f***")
-        || commandinput.value.includes("bitch") || commandinput.value.includes("b****") || commandinput.value.includes('cunt') || commandinput.value.includes("stupid") 
-        || commandinput.value.includes("retard")|| commandinput.value.includes("idiot")|| commandinput.value.includes("ass") || commandinput.value.includes("shit")
-        || commandinput.value.includes("loser")){
-            commandoutput.value = swearreplies[Math.floor(Math.random() * swearreplies.length)];
-        } else if(commandinput.value.includes("donate")){
+        if(commandinput.value.includes("donate")){
             commandoutput.value = "...";
             window.open("https://paypal.me/tylerruotolo");
         } else if(commandinput.value == ""){
@@ -119,15 +151,55 @@ function scriptAI(){
         } else if(commandinput.value.includes('weather')){
             commandoutput.value = "Here's the weather for today...";
             window.open("https://duckduckgo.com/?q=weather");
-        } else if(commandinput.value.includes("how") || commandinput.value.includes("what") && !commandinput.value.includes('version') && !commandinput.value.includes("time") 
-        & !commandinput.value.includes("the time") & !commandinput.value.includes("date") || commandinput.value.includes("who") || commandinput.value.includes("search")){
-            commandoutput.value = "Searching the web for '" + commandinput.value + "'";
-            window.open("https://duckduckgo.com/?q=" + commandinput.value);
         } else if(commandinput.value.includes("random number")){
             commandoutput.value = Math.floor((Math.random() * 100) + 1);
         } else if(commandinput.value.includes("dice") || commandinput.value.includes("roll the dice")){
             commandoutput.value = Math.floor((Math.random() * 6) + 1);
-        } else if(commandinput.value.includes("time") || commandinput.value.includes("date")){
+        } else if(commandinput.value.includes("version")){
+            commandoutput.value = version;
+        }
+    }
+
+    for(var i = 0; i < question.length; i++){
+        if(commandinput.value.includes(question[i])&& !commandinput.value.includes('version') && !commandinput.value.includes("time") 
+        && !commandinput.value.includes("the time") && !commandinput.value.includes("date") && !commandinput.value.includes("day") 
+        && !commandinput.value.includes("you") && !commandinput.value.includes("say")){
+            commandoutput.value = "Searching the web for '" + commandinput.value + "'";
+            window.open("https://duckduckgo.com/?q=" + commandinput.value);
+        } 
+    }
+
+    for(var i = 0; i < greetings.length; i++){
+        if(commandinput.value.includes(greetings[i]) && !commandinput.value.includes("this") && !commandinput.value.includes("shit") 
+        && !commandinput.value.includes("something") && !commandinput.value.includes("say")){
+            commandoutput.value = greetingreplies[Math.floor(Math.random() * greetingreplies.length)];
+        }
+    }
+
+    for(var i = 0; i < hruprompt.length; i++){
+        if(commandinput.value.includes(hruprompt[i])){
+            commandoutput.value = hrureplies[Math.floor(Math.random() * hrureplies.length)];
+        }
+    }
+
+    for(var i = 0; i < swears.length; i++){
+        if(commandinput.value .includes(swears[i]) && !commandinput.value.includes("say")){
+            commandoutput.value = swearreplies[Math.floor(Math.random() * swearreplies.length)];
+        }
+    }
+
+    if(commandinput.value.includes("say") && !commandinput.value.includes("funny") && !commandinput.value.includes("joke")){
+        commandoutput.value = commandinput.value.replace("say", "");
+    }
+    
+    for(var i = 0; i < jokeprompt.length; i++){
+        if(commandinput.value.includes(jokeprompt[i])){
+            commandoutput.value = jokes[Math.floor(Math.random() * jokes.length)];
+        } 
+    }
+    
+    for(var i = 0; i < datetime.length; i++){
+        if(commandinput.value.includes(datetime[i]) && !commandinput.value.includes("how are you")){
             let currentDate = new Date();
             let cDay = currentDate.getDate();
             let cMonth = currentDate.getMonth() + 1;
@@ -168,22 +240,15 @@ function scriptAI(){
             ]
 
             commandoutput.value = "It is currently " + months[cMonth] + " " + cDay + ", " + cYear + " at " + cTime;
-        } else if(commandinput.value.includes("version")){
-            commandoutput.value = version;
-        } else{
-            commandoutput.value = "Sorry, I didn't get that.";
         }
     }
-
-    if(commandinput.value.includes("say") && !commandinput.value.includes("funny") && !commandinput.value.includes("joke")){
-        commandoutput.value = commandinput.value.replace("say", "");
-    } else if(commandinput.value.includes("joke") || commandinput.value.includes("funny")){
-        commandoutput.value = jokes[Math.floor(Math.random() * jokes.length)];
-    } else if(commandinput.value.includes("tweet")){
+    
+    if(commandinput.value.includes("tweet")){
         var tweet = commandinput.value.replace("tweet", "");
         commandoutput.value = "Posting" + '"' + tweet + '"';
         window.open('https://twitter.com/intent/tweet?text=' + tweet);
     }
+
     //Voice & TTS system
     var available_voices = window.speechSynthesis.getVoices();
     
@@ -208,22 +273,21 @@ function scriptAI(){
 }
 
 function talk() {
-
     if (window.hasOwnProperty('webkitSpeechRecognition')) {
-
         var recognition = new webkitSpeechRecognition();
-        var mic = document.getElementById('micbutt');
-
+        var micbutt = document.getElementById('talkbutt');
+        micbutt.style = 'background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3); animation-play-state: running; background-size: 1800% 1800%;';
+        commandinput.style = 'background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3); animation-play-state: running; background-size: 1800% 1800%;';
         recognition.continuous = false;
         recognition.interimResults = false;
-        micbutt.src = 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ffile.mockplus.com%2Fimage%2F2018%2F04%2F5fc8b569-d76f-4d5d-809a-6dc6968e28f7.gif&f=1&nofb=1';
         recognition.lang = "en-US";
         recognition.start();
         recognition.onresult = function (e) {
             commandinput.value
                 = e.results[0][0].transcript;
             recognition.stop();
-            micbutt.src = 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.iconsdb.com%2Ficons%2Fpreview%2Fwhite%2Fmicrophone-8-xxl.png&f=1&nofb=1';
+            micbutt.style = 'background: rgba(0,0,0,0); animation-play-state: paused';
+            commandinput.style = 'background: black; animation-play-state: paused';
             scriptAI();
         };
 

@@ -1,7 +1,5 @@
 body{
     background-color: black;
-    background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ficyber.me%2Fcontent%2Fimages%2Fsystem%2Fhome_cover_1553642738102_57e35a.gif&f=1&nofb=1');
-    background-size: cover;
 }
 
 #output{
@@ -30,6 +28,8 @@ body{
     position: absolute;
     bottom: 0;
     text-transform: lowercase;
+    animation: rainbow 9s ease infinite;
+    animation-play-state: paused;
 }
 
 #talkbutt{
@@ -42,8 +42,18 @@ body{
     background: rgba(0, 0, 0, 0);
     outline: none;
     position: absolute;
+    background: rgba(0, 0, 0, 0); 
+    animation: rainbow 9s ease infinite;
+    animation-play-state: paused;
+    background-size: 1800% 1800%;
     bottom: 0;
     right: 0;
 } #talkbutt:active{
     background-color: red;
+}
+
+@keyframes rainbow { 
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
 }
