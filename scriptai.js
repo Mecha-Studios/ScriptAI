@@ -1,7 +1,7 @@
 //ScriptAI 
 //Copyright (C) TR 2021
 
-var version = "1.3.1";
+var version = "1.4";
 var commandinput = document.getElementById('input');
 var commandoutput = document.getElementById('output');
 commandinput.value.toLowerCase();
@@ -84,90 +84,95 @@ function scriptAI(){
     ];
 
     //Message reception & response system
-    if(commandinput.value.includes("hey") && !commandinput.value.includes("say") || commandinput.value.includes("hello") && !commandinput.value.includes("say") 
-    || commandinput.value.includes("hi") && !commandinput.value.includes("shit") && !commandinput.value.includes("something") && !commandinput.value.includes("say") 
-    || commandinput.value.includes("what's up") && !commandinput.value.includes("say") || commandinput.value.includes("whats up") && !commandinput.value.includes("say")){
-        commandoutput.value = greetingreplies[Math.floor(Math.random() * greetingreplies.length)];
-    } else if(commandinput.value.includes("how are you")){
-        commandoutput.value = hrureplies[Math.floor(Math.random() * hrureplies.length)];
-    } else if(commandinput.value .includes("stupid") || commandinput.value.includes("fuck") || commandinput.value.includes("bitch")
-    || commandinput.value.includes('cunt') || commandinput.value.includes("stupid") || commandinput.value.includes("retard")
-    || commandinput.value.includes("idiot") || commandinput.value.includes("ass") || commandinput.value.includes("shit")
-    || commandinput.value.includes("loser") && !commandinput.value.includes("say")){
-        commandoutput.value = swearreplies[Math.floor(Math.random() * swearreplies.length)];
-    } else if(commandinput.value.includes("joke") || commandinput.value.includes("funny")){
-        commandoutput.value = jokes[Math.floor(Math.random() * jokes.length)];
-    } else if(commandinput.value == "do you work on macs"){
-        commandoutput.value = "Yes, as long as you don't use Safari.";
-    } else if(commandinput.value.includes("donate")){
-        commandoutput.value = "...";
-        window.open("https://paypal.me/tylerruotolo");
-    } else if(commandinput.value == ""){
-        commandoutput.value = "...";
-    } else if(commandinput.value == "yes"){
-        commandoutput.value = repliestoyes[Math.floor(Math.random() * repliestoyes.length)];
-    } else if(commandinput.value.includes("your name") || commandinput.value.includes("who are you")){
-        commandoutput.value = whorureplies[Math.floor(Math.random() * whorureplies.length)];
-    } else if(commandinput.value.includes('weather')){
-        commandoutput.value = "Here's the weather for today...";
-        window.open("https://duckduckgo.com/?q=weather");
-    } else if(commandinput.value.includes("how") || commandinput.value.includes("what") && !commandinput.value.includes('version') && !commandinput.value.includes("time") 
-    & !commandinput.value.includes("the time") & !commandinput.value.includes("date") || commandinput.value.includes("who") || commandinput.value.includes("search")){
-        commandoutput.value = "Searching the web for '" + commandinput.value + "'";
-        window.open("https://duckduckgo.com/?q=" + commandinput.value);
-    } else if(commandinput.value.includes("random number")){
-        commandoutput.value = Math.floor((Math.random() * 100) + 1);
-    } else if(commandinput.value.includes("dice") || commandinput.value.includes("roll the dice")){
-        commandoutput.value = Math.floor((Math.random() * 6) + 1);
-    } else if(commandinput.value.includes("say") && !commandinput.value.includes("funny") && !commandinput.value.includes("joke")){
-        commandoutput.value = commandinput.value.split("say");
-    } else if(commandinput.value.includes("time") || commandinput.value.includes("date")){
-        let currentDate = new Date();
-        let cDay = currentDate.getDate();
-        let cMonth = currentDate.getMonth() + 1;
-        let cYear = currentDate.getFullYear();
-        let cHour = currentDate.getHours()
-        let cMin = currentDate.getMinutes();
-        var ampm;
+    if(!commandinput.value.includes("say") && !commandinput.value.includes("tweet")){
+        if(commandinput.value.includes("hey")|| commandinput.value.includes("hello") || commandinput.value.includes("hi") && !commandinput.value.includes("this") 
+        && !commandinput.value.includes("shit") && !commandinput.value.includes("something") || commandinput.value.includes("what's up")
+        || commandinput.value.includes("whats up")){
+            commandoutput.value = greetingreplies[Math.floor(Math.random() * greetingreplies.length)];
+        } else if(commandinput.value.includes("how are you")){
+            commandoutput.value = hrureplies[Math.floor(Math.random() * hrureplies.length)];
+        } else if(commandinput.value .includes("stupid") || commandinput.value.includes("fuck")
+        || commandinput.value.includes("bitch") || commandinput.value.includes('cunt') || commandinput.value.includes("stupid") 
+        || commandinput.value.includes("retard")|| commandinput.value.includes("idiot")|| commandinput.value.includes("ass") || commandinput.value.includes("shit")
+        || commandinput.value.includes("loser")){
+            commandoutput.value = swearreplies[Math.floor(Math.random() * swearreplies.length)];
+        } else if(commandinput.value.includes("donate")){
+            commandoutput.value = "...";
+            window.open("https://paypal.me/tylerruotolo");
+        } else if(commandinput.value == ""){
+            commandoutput.value = "...";
+        } else if(commandinput.value == "yes"){
+            commandoutput.value = repliestoyes[Math.floor(Math.random() * repliestoyes.length)];
+        } else if(commandinput.value.includes("your name") || commandinput.value.includes("who are you")){
+            commandoutput.value = whorureplies[Math.floor(Math.random() * whorureplies.length)];
+        } else if(commandinput.value.includes('weather')){
+            commandoutput.value = "Here's the weather for today...";
+            window.open("https://duckduckgo.com/?q=weather");
+        } else if(commandinput.value.includes("how") || commandinput.value.includes("what") && !commandinput.value.includes('version') && !commandinput.value.includes("time") 
+        & !commandinput.value.includes("the time") & !commandinput.value.includes("date") || commandinput.value.includes("who") || commandinput.value.includes("search")){
+            commandoutput.value = "Searching the web for '" + commandinput.value + "'";
+            window.open("https://duckduckgo.com/?q=" + commandinput.value);
+        } else if(commandinput.value.includes("random number")){
+            commandoutput.value = Math.floor((Math.random() * 100) + 1);
+        } else if(commandinput.value.includes("dice") || commandinput.value.includes("roll the dice")){
+            commandoutput.value = Math.floor((Math.random() * 6) + 1);
+        } else if(commandinput.value.includes("time") || commandinput.value.includes("date")){
+            let currentDate = new Date();
+            let cDay = currentDate.getDate();
+            let cMonth = currentDate.getMonth() + 1;
+            let cYear = currentDate.getFullYear();
+            let cHour = currentDate.getHours()
+            let cMin = currentDate.getMinutes();
+            var ampm;
 
-        if(cHour >= 13){
-            cHour = currentDate.getHours() - 12;
-            ampm = "PM";
+            if(cHour >= 13){
+                cHour = currentDate.getHours() - 12;
+                ampm = "PM";
+            } else{
+                cHour = currentDate.getHours();
+                ampm = "AM";
+            }
+
+            if(cMin <= 9){
+                cMin = "0" + currentDate.getMinutes();
+            } else if(cMin >= 9){
+                cMin = currentDate.getMinutes();
+            }
+
+            var cTime = cHour + ":" + cMin + " " + ampm;
+            var months = [
+                " ",
+                "January",
+                "February",
+                "March",
+                "April",
+                "May",
+                "June",
+                "July",
+                "August",
+                "September",
+                "October",
+                "November",
+                "December"
+            ]
+
+            commandoutput.value = "It is currently " + months[cMonth] + " " + cDay + ", " + cYear + " at " + cTime;
+        } else if(commandinput.value.includes("version")){
+            commandoutput.value = version;
         } else{
-            cHour = currentDate.getHours();
-            ampm = "AM";
+            commandoutput.value = "Sorry, I didn't get that.";
         }
-
-        if(cMin <= 9){
-            cMin = "0" + currentDate.getMinutes();
-        } else if(cMin >= 9){
-            cMin = currentDate.getMinutes();
-        }
-
-        var cTime = cHour + ":" + cMin + " " + ampm;
-        var months = [
-            " ",
-            "January",
-            "February",
-            "March",
-            "April",
-            "May",
-            "June",
-            "July",
-            "August",
-            "September",
-            "October",
-            "November",
-            "December"
-        ]
-
-        commandoutput.value = "It is currently " + months[cMonth] + " " + cDay + ", " + cYear + " at " + cTime;
-    } else if(commandinput.value.includes("version")){
-        commandoutput.value = version;
-    } else{
-        commandoutput.value = "Sorry, I didn't get that.";
     }
 
+    if(commandinput.value.includes("say") && !commandinput.value.includes("funny") && !commandinput.value.includes("joke")){
+        commandoutput.value = commandinput.value.split("say");
+    } else if(commandinput.value.includes("joke") || commandinput.value.includes("funny")){
+        commandoutput.value = jokes[Math.floor(Math.random() * jokes.length)];
+    } else if(commandinput.value.includes("tweet")){
+        var tweet = commandinput.value.replace("tweet", "");
+        commandoutput.value = "Posting" + '"' + tweet + '"';
+        window.open('https://twitter.com/intent/tweet?text=' + tweet);
+    }
     //Voice & TTS system
     var available_voices = window.speechSynthesis.getVoices();
     
