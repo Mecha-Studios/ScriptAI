@@ -91,8 +91,8 @@ function scriptAI(){
             commandoutput.value = greetingreplies[Math.floor(Math.random() * greetingreplies.length)];
         } else if(commandinput.value.includes("how are you")){
             commandoutput.value = hrureplies[Math.floor(Math.random() * hrureplies.length)];
-        } else if(commandinput.value .includes("stupid") || commandinput.value.includes("fuck")
-        || commandinput.value.includes("bitch") || commandinput.value.includes('cunt') || commandinput.value.includes("stupid") 
+        } else if(commandinput.value .includes("stupid") || commandinput.value.includes("fuck") || commandinput.value.includes("f***")
+        || commandinput.value.includes("bitch") || commandinput.value.includes("b****") || commandinput.value.includes('cunt') || commandinput.value.includes("stupid") 
         || commandinput.value.includes("retard")|| commandinput.value.includes("idiot")|| commandinput.value.includes("ass") || commandinput.value.includes("shit")
         || commandinput.value.includes("loser")){
             commandoutput.value = swearreplies[Math.floor(Math.random() * swearreplies.length)];
