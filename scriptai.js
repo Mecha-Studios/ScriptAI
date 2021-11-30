@@ -176,7 +176,7 @@ function scriptAI(){
     }
 
     if(commandinput.value.includes("say") && !commandinput.value.includes("funny") && !commandinput.value.includes("joke")){
-        commandoutput.value = commandinput.value.split("say");
+        commandoutput.value = commandinput.value.replace("say", "");
     } else if(commandinput.value.includes("joke") || commandinput.value.includes("funny")){
         commandoutput.value = jokes[Math.floor(Math.random() * jokes.length)];
     } else if(commandinput.value.includes("tweet")){
