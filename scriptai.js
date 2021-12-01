@@ -13,7 +13,8 @@ function scriptAI(){
         "how",
         "where",
         "when",
-        "why"
+        "why",
+        "who"
     ];
 
     var greetings = [
