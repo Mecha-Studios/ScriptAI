@@ -1,6 +1,6 @@
 //ScriptAI 
 //Copyright (C) TR 2021
-var version = "1.5.1";
+var version = "1.5.2";
 var commandinput = document.getElementById('input');
 var commandoutput = document.getElementById('output');
 commandinput.value.toLowerCase();
@@ -288,7 +288,7 @@ function talk() {
                 = e.results[0][0].transcript;
             recognition.stop();
             micbutt.style = 'background: rgba(0,0,0,0); animation-play-state: paused';
-            commandinput.style = 'background: black; animation-play-state: paused';
+            commandinput.style = 'background: rgba(0,0,0,0); animation-play-state: paused';
             scriptAI();
         };
 

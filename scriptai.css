@@ -1,5 +1,8 @@
 body{
-    background-color: black;
+    background: linear-gradient(124deg, #000000, #4e0000, #630000, #7e0000, #8d0000, #a00101); 
+    animation-play-state: running; 
+    animation: rainbow 9s ease infinite;
+    background-size: 18000% 18000%;
 }
 
 #output{

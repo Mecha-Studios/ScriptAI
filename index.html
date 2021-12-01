@@ -5,11 +5,14 @@
         <link id="css" href="scriptai.css" rel="stylesheet">
     </head>
     <body>
-        <textarea id="output" readonly></textarea>
-        <input id="input" autocapitalize="none" placeholder="type a message" type="text" onchange="scriptAI()"/>
-        <button id="talkbutt" class="talking" onclick="talk()">
-            <img id="micbutt" style="height: 100%;" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.iconsdb.com%2Ficons%2Fpreview%2Fwhite%2Fmicrophone-8-xxl.png&f=1&nofb=1"/>
-        </button>
+        <div id="backgroundthing">
+            <textarea id="output" readonly></textarea>
+            <input id="input" autocapitalize="none" placeholder="type a message" type="text" onchange="scriptAI()"/>
+            <button id="talkbutt" class="talking" onclick="talk()">
+                <img id="micbutt" style="height: 100%;" src="mic.png"/>
+            </button>
+        </div>    
+            
         <script src="scriptai.js"></script>
     </body>
 </html>
