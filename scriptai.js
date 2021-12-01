@@ -164,7 +164,7 @@ function scriptAI(){
     for(var i = 0; i < question.length; i++){
         if(commandinput.value.includes(question[i])&& !commandinput.value.includes('version') && !commandinput.value.includes("time") 
         && !commandinput.value.includes("the time") && !commandinput.value.includes("date") && !commandinput.value.includes("day") 
-        && !commandinput.value.includes("you") && !commandinput.value.includes("say")){
+        && !commandinput.value.includes("you") && !commandinput.value.includes("say") && !commandinput.value.includes("weather")){
             commandoutput.value = "Searching the web for '" + commandinput.value + "'";
             window.open("https://duckduckgo.com/?q=" + commandinput.value);
         } 
