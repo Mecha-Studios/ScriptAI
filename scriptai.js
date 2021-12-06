@@ -1,6 +1,6 @@
 //ScriptAI 
 //Copyright (C) TR 2021
-var version = "1.5.2";
+var version = "1.6";
 var commandinput = document.getElementById('input');
 var commandoutput = document.getElementById('output');
 commandinput.value.toLowerCase();
@@ -66,6 +66,20 @@ function scriptAI(){
         "day",
         "time",
     ]
+
+    var weatherpromt = [
+        "weather",
+        "forecast",
+        "temperature",
+    ];
+
+    var websiteprompt = [
+        "go to",
+        "launch",
+        "open",
+        "open up",
+        "go to the website"
+    ];
 
     //RESPONSES
     var jokes = [
@@ -149,15 +163,19 @@ function scriptAI(){
             commandoutput.value = repliestoyes[Math.floor(Math.random() * repliestoyes.length)];
         } else if(commandinput.value.includes("your name") || commandinput.value.includes("who are you")){
             commandoutput.value = whorureplies[Math.floor(Math.random() * whorureplies.length)];
-        } else if(commandinput.value.includes('weather')){
-            commandoutput.value = "Here's the weather for today...";
-            window.open("https://duckduckgo.com/?q=weather");
         } else if(commandinput.value.includes("random number")){
             commandoutput.value = Math.floor((Math.random() * 100) + 1);
         } else if(commandinput.value.includes("dice") || commandinput.value.includes("roll the dice")){
             commandoutput.value = Math.floor((Math.random() * 6) + 1);
         } else if(commandinput.value.includes("version")){
             commandoutput.value = version;
+        }
+    }
+
+    for(var i = 0; i < weatherpromt.length; i++){
+        if(commandinput.value.includes(weatherpromt[i])){
+            commandoutput.value = "Here's the " + weatherpromt[i] + " for today...";
+            window.open("https://duckduckgo.com/?q=weather");
         }
     }
 
@@ -200,7 +218,7 @@ function scriptAI(){
     }
     
     for(var i = 0; i < datetime.length; i++){
-        if(commandinput.value.includes(datetime[i]) && !commandinput.value.includes("how are you")){
+        if(commandinput.value.includes(datetime[i]) && !commandinput.value.includes(weatherpromt[i]) && !commandinput.value.includes("how are you")){
             let currentDate = new Date();
             let cDay = currentDate.getDate();
             let cMonth = currentDate.getMonth() + 1;
@@ -243,7 +261,14 @@ function scriptAI(){
             commandoutput.value = "It is currently " + months[cMonth] + " " + cDay + ", " + cYear + " at " + cTime;
         }
     }
-    
+
+    /*for(var i = 0; i < websiteprompt.length; i++){
+        if(commandinput.value.includes(websiteprompt[i])){
+            var link = commandinput.value.replace(websiteprompt[i], "https://www.");
+            window.open(link);
+        }
+    }*/
+
     if(commandinput.value.includes("tweet")){
         var tweet = commandinput.value.replace("tweet", "");
         commandoutput.value = "Posting" + '"' + tweet + '"';
@@ -277,7 +302,6 @@ function talk() {
     if (window.hasOwnProperty('webkitSpeechRecognition')) {
         var recognition = new webkitSpeechRecognition();
         var micbutt = document.getElementById('talkbutt');
-        micbutt.style = 'background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3); animation-play-state: running; background-size: 1800% 1800%;';
         commandinput.style = 'background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3); animation-play-state: running; background-size: 1800% 1800%;';
         recognition.continuous = false;
         recognition.interimResults = false;
@@ -287,7 +311,6 @@ function talk() {
             commandinput.value
                 = e.results[0][0].transcript;
             recognition.stop();
-            micbutt.style = 'background: rgba(0,0,0,0); animation-play-state: paused';
             commandinput.style = 'background: rgba(0,0,0,0); animation-play-state: paused';
             scriptAI();
         };

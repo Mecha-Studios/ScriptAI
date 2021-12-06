@@ -1,8 +1,5 @@
 body{
-    background: linear-gradient(124deg, #000000, #4e0000, #630000, #7e0000, #8d0000, #a00101); 
-    animation-play-state: running; 
-    animation: rainbow 9s ease infinite;
-    background-size: 18000% 18000%;
+    background: black;
 }
 
 #output{
@@ -46,13 +43,15 @@ body{
     outline: none;
     position: absolute;
     background: rgba(0, 0, 0, 0); 
-    animation: rainbow 9s ease infinite;
+    animation: rainbow 4s ease infinite;
     animation-play-state: paused;
     background-size: 1800% 1800%;
     bottom: 0;
     right: 0;
-} #talkbutt:active{
-    background-color: red;
+} #talkbutt:hover{
+    background: linear-gradient(124deg, #ff0101, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
+    background-size: 1000% 1000%;
+    animation-play-state: running;
 }
 
 @keyframes rainbow { 
