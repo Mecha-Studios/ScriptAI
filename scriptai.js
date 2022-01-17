@@ -1,6 +1,6 @@
 //ScriptAI 
 //Copyright (C) TR 2021
-var version = "1.6";
+var version = "1.6.2";
 var commandinput = document.getElementById('input');
 var commandoutput = document.getElementById('output');
 commandinput.value.toLowerCase();
@@ -218,7 +218,7 @@ function scriptAI(){
     }
     
     for(var i = 0; i < datetime.length; i++){
-        if(commandinput.value.includes(datetime[i]) && !commandinput.value.includes(weatherpromt[i]) && !commandinput.value.includes("how are you")){
+        if(commandinput.value.includes(datetime[i]) && !commandinput.value.includes(weatherpromt[i]) && !commandinput.value.includes("how are you") && !commandinput.value.includes("weather")){
             let currentDate = new Date();
             let cDay = currentDate.getDate();
             let cMonth = currentDate.getMonth() + 1;
@@ -230,9 +230,11 @@ function scriptAI(){
             if(cHour >= 13){
                 cHour = currentDate.getHours() - 12;
                 ampm = "PM";
-            } else{
+            } else if(cHour <= 13){
                 cHour = currentDate.getHours();
                 ampm = "AM";
+            } else if(cHour <= 0){
+                cHour = 12;
             }
 
             if(cMin <= 9){
